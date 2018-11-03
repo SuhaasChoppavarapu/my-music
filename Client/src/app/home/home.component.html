@@ -1,0 +1,10 @@
+<div class="card-columns my-4">
+  <div class="card"  style="width: 12rem;" *ngFor="let track of tracks">
+    <a routerLink="/track/{{track.mbid}}"><img class="card-img-top" src="{{getImage(track)}}" alt="{{track.name}}"></a>
+    <div class="card-body">
+      <h5 class="card-title">{{track.name}}</h5>
+      <p class="card-text">{{track.artist.name}}</p>
+      <a routerLink="/track/{{track.mbid}}" class="btn btn-primary">view</a>
+    </div>
+  </div>
+  </div>

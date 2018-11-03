@@ -1,0 +1,43 @@
+<div class="container-fluid col-lg-5 col-md-7">
+    <h1 class="text-center">Update Profile</h1>
+  
+    <div *ngIf="msg" class="alert alert-success" role="alert">
+        {{msg}} record updated
+    </div>
+  
+    <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+        {{errorMsg}}
+    </div>
+  
+    <label class="sr-only" for="username">Username*</label>
+    <div class="input-group mb-2 mr-sm-2 mb-sm-2">
+        <div class="input-group-addon"><span class="fa fa-user"></span> </div>
+        <input [(ngModel)]="username"
+               id="username"
+               class="form-control"
+               placeholder="username"/>
+    </div>
+  
+    <label class="sr-only" for="password">Password*</label>
+    <div class="input-group mb-2 mr-sm-2 mb-sm-2">
+        <div class="input-group-addon"><span class="fa fa-key"></span> </div>
+        <input [(ngModel)]="password"
+               id="password"
+               class="form-control"
+               type="password"
+               placeholder="Password"/>
+    </div>
+  
+    <label class="sr-only" for="email">Email</label>
+    <div class="input-group mb-2 mr-sm-2 mb-sm-2">
+        <div class="input-group-addon"><i>@</i></div>
+        <input type="email"
+               [(ngModel)]="email"
+               class="form-control"
+               id="email"
+               placeholder="john@wick.com">
+    </div>
+  
+    <a (click)="updateProfile()" class="btn btn-primary btn-block vsk-ngclick-a col-5 mx-auto">Update Profile</a>
+    <a routerLink="/user/home" class="btn btn-danger btn-block col-5 mx-auto">Cancel</a>
+  </div>

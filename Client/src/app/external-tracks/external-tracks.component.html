@@ -1,0 +1,18 @@
+<div class="card-columns my-4">
+    <!-- error message -->
+    <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+        {{errorMsg}}
+    </div>
+    <div class="card"  style="width: 12rem;" *ngFor="let track of tracks">
+        <div *ngIf="msg" class="alert alert-success" role="alert">
+            {{msg}} track has been deleted! 
+        </div>
+        
+  <img class="card-img-top" src="assets/default-trackImage.jpg" alt="{{track.name}}">
+      <div class="card-body">
+        <h5 class="card-title">{{track.title}}</h5>
+        <p class="card-text">{{track.artist}}</p>
+        <a href="{{track.url}}" class="btn btn-primary">view</a>
+      </div>
+    </div>
+    </div>

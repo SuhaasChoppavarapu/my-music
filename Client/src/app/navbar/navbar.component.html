@@ -1,0 +1,111 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Guest Menu/ Default menu -->
+ <div class="collapse navbar-collapse" id="navbarTogglerDemo01" *ngIf="userService.currentUser==null">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="assets/Spotify_Icon.png" width="30" height="30" alt="">
+    </a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" (click)="getCurrentUser()">Search Tracks</a></li> -->
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm">
+      <a class="btn btn-outline-success my-2 my-sm-0" routerLink="searchTracks/{{searchTerm}}">Search</a>
+    </form>
+    <div class="username" *ngIf="userService.currentUser!=null">{{userService.currentUser.username}}</div>
+    <a class="nav-link" routerLink="/login">
+      <img class="img-prof" src="assets/user-profile-default.svg" height="30" />
+  </a>
+  </div>
+
+  <!-- User role Menu -->
+ <div class="collapse navbar-collapse" id="navbarTogglerDemo01" *ngIf="userService.currentUser!=null && userService.currentUser.role=='USER'">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="assets/Spotify_Icon.png" width="30" height="30" alt="">
+    </a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user/externalTracks">External tracks</a></li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm">
+      <a class="btn btn-outline-success my-2 my-sm-0" routerLink="searchTracks/{{searchTerm}}">Search</a>
+    </form>
+    <div class="username" *ngIf="userService.currentUser!=null">{{userService.currentUser.username}}</div>
+
+    <ul class="nav nav-pills" >
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                    <!-- <div class="d-inline-block"> -->
+                    <!-- <strong class=" red-text text-box em d-inline">{{model.messageCount.value}}</strong> -->
+                    <img class="img-prof-large" width="30" height="30" src="assets/user-profile-default.svg" />
+                    <!-- </div> -->
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <!-- <a class="dropdown-item" routerLink="/message">Messages</a> -->
+                    <a class="dropdown-item" routerLink="/user/profile">Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item" role="button" (click)="logout()">Logout</button>
+                </div>
+            </li>
+            <!-- <li ng-if="!model.currentUser._id">
+                <a class="nav-link" href="#/login">
+                    <img class="img-prof-large" src="uploads/default-profile.png" />
+                </a>
+            </li> -->
+        </ul>
+  </div>
+
+  <!-- Artist role Menu -->
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01" *ngIf="userService.currentUser!=null && userService.currentUser.role=='ARTIST'">
+      <a class="navbar-brand" routerLink="/home">
+        <img src="assets/Spotify_Icon.png" width="30" height="30" alt="">
+      </a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/artist/myTracks">Artist Tracks</a></li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm">
+        <a class="btn btn-outline-success my-2 my-sm-0" routerLink="searchTracks/{{searchTerm}}">Search</a>
+      </form>
+      <div class="username" *ngIf="userService.currentUser!=null">{{userService.currentUser.username}}</div>
+
+      <ul class="nav nav-pills" >
+  
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+                      <!-- <div class="d-inline-block"> -->
+                      <!-- <strong class=" red-text text-box em d-inline">{{model.messageCount.value}}</strong> -->
+                      <img class="img-prof-large" width="30" height="30" src="assets/user-profile-default.svg" />
+                      <!-- </div> -->
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                      <!-- <a class="dropdown-item" routerLink="/message">Messages</a> -->
+                      <a class="dropdown-item" routerLink="/artist/profile">Profile</a>
+                      <a class="dropdown-item" routerLink="/artist/addTrack">Add Track</a>
+                      <div class="dropdown-divider"></div>
+                      <button class="dropdown-item" role="button" (click)="logout()">Logout</button>
+                  </div>
+              </li>
+              <!-- <li ng-if="!model.currentUser._id">
+                  <a class="nav-link" href="#/login">
+                      <img class="img-prof-large" src="uploads/default-profile.png" />
+                  </a>
+              </li> -->
+          </ul>
+    </div>
+</nav>

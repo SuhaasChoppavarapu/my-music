@@ -1,0 +1,64 @@
+<div class="my-4 col-lg-6 mx-auto">
+        <div *ngIf="msg" class="alert alert-success" role="alert">
+                {{msg}}
+            </div>
+          
+            <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+                {{errorMsg}}
+            </div>
+<div class="card">
+  <div class="card-block">
+    <img class="card-img float-right"
+    style="width: 10rem;" height="160px"
+         src="{{getImage(track)}}"
+         alt="{{track.name}}">
+    <div class="card-body mb-0">
+        <h4 class="card-title mb-0">
+            {{track.name}}
+        </h4>
+        <p class="card-text mb-0" *ngIf="!love">
+                <button (click)="addTofav()"  class="btn btn-danger btn-sm mx-auto" role="button">
+                        Add to Favorites
+                </button>
+                    </p>
+        <p class="card-text mb-0" *ngIf="love">
+                <button (click)="addTofav()"  class="btn btn-danger btn-sm mx-auto" role="button">
+                        Remove from Favorites
+                </button>
+                    </p>
+        <p class="card-text mb-1"><a href="{{track.artist.url}}" target="_blank"> {{track.artist.name}} </a></p>
+        <div class="my-1">
+        <span class="badge badge-default">Listeners: {{track.listenerscount | number}}</span>
+        <span class="badge badge-default">PlayCount: {{track.playcount | number}}</span>
+        </div>
+        <div class="mb-0">
+            Tags:
+        <span *ngFor="let tag of track.toptags.tag"
+              class="badge badge-default">{{tag.name}}</span>
+        </div>
+      </div>
+      
+       <!--Comments-->
+     <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="card">
+            <div class="alert-info" role="tab" id="headingTwo">
+                <h5 class="mb-0">
+                    <a class="alert-link collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                       data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        Summary
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="card-block">
+                    <h6 class="card-text text-justify" [innerHtml]="track.wiki.summary!=null?track.wiki.summary:No_summaryfound"></h6>
+                    <p class="card-text" *ngIf="track.wiki"><small class="text-muted">Published:
+                        {{track.wiki.published | date:'MMM dd, yyyy h:mm a'}}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>

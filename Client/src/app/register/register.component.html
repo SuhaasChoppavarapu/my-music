@@ -1,0 +1,81 @@
+<div class="container-fluid col-lg-5 col-md-7">
+        <h1 class="text-center">Register</h1>
+      
+        <!-- success message -->
+        <div *ngIf="msg" class="alert alert-success" role="alert">
+            {{msg.msg}}
+        </div>
+      
+        <!-- error message -->
+        <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+            {{errorMsg}}
+        </div>
+      
+        <label class="sr-only" for="username">Username*</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-2">
+            <div class="input-group-addon"><span class="fa fa-user"></span> </div>
+            <input [(ngModel)]="username"
+                   id="username"
+                   class="form-control"
+                   placeholder="username"/>
+        </div>
+      
+        <label class="sr-only" for="password">Password*</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-2">
+            <div class="input-group-addon"><span class="fa fa-key"></span> </div>
+            <input [(ngModel)]="password"
+                   id="password"
+                   class="form-control"
+                   type="password"
+                   placeholder="Password"/>
+        </div>
+      
+        <!-- <label class="sr-only" for="password2">Verify Password*</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-2">
+            <div class="input-group-addon"><span class="fa fa-key"></span> </div>
+            <input ng-model="user.password2"
+                   id="password2"
+                   class="form-control"
+                   type="password"
+                   placeholder="Reenter Password"/>
+        </div> -->
+      
+        <label class="sr-only" for="fname">First Name</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-2">
+            <div class="input-group-addon"><span class="fa fa-user"></span> </div>
+            <input [(ngModel)]="firstname"
+                   type="text"
+                   class="form-control"
+                   id="fname"
+                   placeholder="First Name">
+        </div>
+      
+        <label class="sr-only" for="lname">Last Name</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-2">
+            <div class="input-group-addon"><span class="fa fa-user"></span> </div>
+            <input [(ngModel)]="lastname"
+                  type="text"
+                   class="form-control"
+                   id="lname"
+                   placeholder="Last Name">
+        </div>
+      
+        <label class="sr-only" for="email">Email</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-2">
+            <div class="input-group-addon"><i>@</i></div>
+            <input type="email"
+                   [(ngModel)]="email"
+                   class="form-control"
+                   id="email"
+                   placeholder="john@wick.com">
+        </div>
+      
+        <span class="white-text mr-sm-2">Register as</span>
+        <select class="custom-select col-7 mb-2 mr-sm-2 mb-sm-2" id="userRole" [(ngModel)]="role">
+            <option selected value="USER">User</option>
+            <option value="ARTIST">Artist</option>
+        </select>
+      
+        <a (click)="registerUser()" class="btn btn-primary btn-block vsk-ngclick-a col-5 mx-auto">Register</a>
+        <a routerLink="/login" class="btn btn-danger btn-block col-5 mx-auto">Cancel</a>
+      </div>

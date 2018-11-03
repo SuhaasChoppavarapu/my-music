@@ -1,0 +1,27 @@
+<div class="container-fluid col-lg-4 col-md-7">
+    <h1 class="text-center">Add new track</h1>
+    <div *ngIf="msg" class="alert alert-success" role="alert">
+        {{msg.msg}}
+    </div>
+  
+    <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+        {{errorMsg}}
+    </div>
+<div class="form-group">
+    <label for="formGroupExampleInput">Title</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" [(ngModel)]="title">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Artist Name</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Artist Name" [(ngModel)]="artistname">
+  </div>
+  <div class="form-group">
+      <label for="formGroupExampleInput2">Track Url</label>
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Track url" [(ngModel)]="url">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Summary</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Summary" [(ngModel)]="summary">
+      </div>
+  <button (click)="addTrack()"type="button" class="btn btn-primary">Submit</button>
+  </div>

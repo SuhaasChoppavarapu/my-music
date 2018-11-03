@@ -1,0 +1,20 @@
+<form class="form-inline my-6">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm">
+  <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchTracksfromhere()">Search</button>
+ </form>
+ <div class="alert alert-warning alert-dismissible fade show" role="alert"*ngIf="tracks.length==0">
+  <strong>No tracks found for your search criteria</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+ </div>
+ <div class="card-columns my-4" *ngIf="tracks.length!=0">
+  <div class="card"  style="width: 12rem;" *ngFor="let track of tracks">
+    <a routerLink="/track/{{track.mbid}}"><img class="card-img-top" src="{{getImage(track)}}" alt="{{track.name}}"></a>
+    <div class="card-body">
+      <h5 class="card-title">{{track.name}}</h5>
+      <p class="card-text">{{track.artist.name}}</p>
+      <a routerLink="/track/{{track.mbid}}" class="btn btn-primary">view</a>
+    </div>
+  </div>
+  </div>
